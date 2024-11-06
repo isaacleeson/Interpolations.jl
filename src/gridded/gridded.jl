@@ -74,7 +74,7 @@ end
     else
         axes(k1, 1) == ax1 || throw(DimensionMismatch("knot vectors must have the same axes as the corresponding dimension of the array"))
     end
-    degree(flag) isa Union{NoInterp,Constant,Linear} || error("only Linear, Constant, and NoInterp supported, got $flag")
+    degree(flag) isa Union{NoInterp,Constant,Linear,Chebyshev} || error("only Linear, Constant, Chebyshev and NoInterp supported, got $flag")
     length(k1) == 1 && error("dimensions of length 1 not yet supported")  # FIXME
     if issorted(k1)
         if !allunique(k1)
