@@ -5,7 +5,6 @@ struct Chebyshev{BC<:Union{Throw{OnGrid}},N} <: DegreeBC{N}
 end
 Chebyshev(N) = Chebyshev(Throw(OnGrid()),Val(N))
 Chebyshev(bc::BC,v::VN) where {BC,VN} = Chebyshev{BC,VN}(bc)
-degree(::Gridded{Chebyshev{BC,N}}) where {BC,N} = N
 positions(deg::Chebyshev, knotvec, x) = @inbounds (axes(ax,1)[1], (x-first(ax))/(last(ax)-first(ax)))
 value_weights(T::Val{N},z::F) where {N,F} = NTuple{N,F}(ChebyshevPolynomial(N,z))
 
